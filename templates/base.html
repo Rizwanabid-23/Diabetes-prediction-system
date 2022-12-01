@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Diabetes Prediction System</title>
 </head>
@@ -25,7 +27,7 @@
             <nav class="nav">
                 <div> <a href="" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
                             class="nav_logo-name">Diabetes <br> Prediction <br> System</span> </a>
-                    <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-user nav_icon'></i>
+                    <div class="nav_list"> <a href="/checkPatient" class="nav_link active"> <i class='bx bx-user nav_icon'></i>
                             <span class="nav_name">Check patient</span> </a>
                         <!-- <a href="#" class="nav_link"> <i
                                 class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> <a href="#"
@@ -42,7 +44,7 @@
             </nav>
         </div>
         </div>
-        <!--Container Main start-->
+
         <div class=" bg-light" style="">
             <h4>Main </h4>
         </div>
@@ -50,289 +52,227 @@
             <h4>Main </h4>
         </div>
 
-        <!--Container Main end-->
         <div class="row">
             <h2>Patient's Information</h2>
         </div>
-
-        <div class="form">
+        <form action="/" method="POST">
+        <div class="form" >
             <div class="row">
-                <div class="col" >  <b>Name </b> <br>
-                    <input type="text" style="border-radius: 5px;">
-                 </div>
+                <div class="col"> <b>Name </b> <br>
+                    <input type="text" name="name" style="border-radius: 5px;">
+                </div>
                 <div class="col"><b>Age</b> <br>
-                    <input type="number" style="border-radius: 5px;">
+                    <input type="number" name="age" min="20" style="border-radius: 5px;">
                 </div>
             </div>
 
-            <div class="row" style="margin-top: 50px;" >
+            <div class="row" style="margin-top: 50px;">
                 <div class="col">
-                    <select class="form-select" aria-label="Default select example" style="width:30%;border-radius: 5px;">
-                        <option selected> <b>Select gender</b> </option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="unknown">Prefer not to say</option>
-                    </select></div>
-                <div class="col">
-                    <label for="polyuria"><b>Polyuria</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="polyuria">
-                        <label class="form-check-label" for="polyuria">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notpolyuria" checked>
-                        <label class="form-check-label" for="polyuria">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="polydipsia"><b>Polydipsia</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="polydipsia">
-                        <label class="form-check-label" for="polydipsia">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notpolydipsia" checked>
-                        <label class="form-check-label" for="notpolydipsia">
-                            No
-                        </label>
-                    </div>
+                    <b>BMI</b> <br>
+                    <input type="number" min="0" name="bmi" style="border-radius: 5px;">
                 </div>
                 <div class="col">
-                    <label for="polydipsia"><b>Weakness</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="weakness">
-                        <label class="form-check-label" for="weakness">
+                    <label><b>High Cholestrol</b></label>
+                    <div>
+                        <label>
+                            <input type="checkbox" class="radio" name="chol" value="1" name="chol[1][]" />
                             Yes
                         </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notweakness" checked>
-                        <label class="form-check-label" for="notweakness">
+                        <br>
+                        <label>
+                            <input type="checkbox" class="radio" name="chol" value="0" name="chol[1][]" />
                             No
                         </label>
                     </div>
                 </div>
             </div>
 
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="visualblurring"><b>Visual blurring</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="visualblurring">
-                        <label class="form-check-label" for="visualblurring">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="visualblurring" checked>
-                        <label class="form-check-label" for="visualblurring">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="itching"><b>Itching</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="itching">
-                        <label class="form-check-label" for="itching">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="itching" checked>
-                        <label class="form-check-label" for="itching">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="obesity"><b>Obesity</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="obesity">
-                        <label class="form-check-label" for="obesity">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notobesity" checked>
-                        <label class="form-check-label" for="notobesity">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="weightloss"><b>Sudden weight loss</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="weightloss">
-                        <label class="form-check-label" for="weightloss">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notweightloss" checked>
-                        <label class="form-check-label" for="notweightloss">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="polyphagia"><b>Polyphagia</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="polyphagia">
-                        <label class="form-check-label" for="polyphagia">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notpolyphagia" checked>
-                        <label class="form-check-label" for="notpolyphagia">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="genitalthrush"><b>Genital thrush</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="genitalthrush">
-                        <label class="form-check-label" for="genitalthrush">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="genitalthrush" checked>
-                        <label class="form-check-label" for="genitalthrush">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="irritability"><b>Irritability</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="irritability">
-                        <label class="form-check-label" for="irritability">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notirritability" checked>
-                        <label class="form-check-label" for="notirritability">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="delayedhealing"><b>Delayed healing</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="delayedhealing">
-                        <label class="form-check-label" for="delayedhealing">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notdelayedhealing" checked>
-                        <label class="form-check-label" for="notdelayedhealing">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="paresis"><b>Partial paresis</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="paresis">
-                        <label class="form-check-label" for="paresis">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notparesis" checked>
-                        <label class="form-check-label" for="notparesis">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="musclestiffness"><b>Muscle stiffness</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="musclestiffness">
-                        <label class="form-check-label" for="musclestiffness">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notmusclestiffness" checked>
-                        <label class="form-check-label" for="notmusclestiffness">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 50px;" >
-                <div class="col">
-                    <label for="alopecia"><b>Alopecia</b></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="alopecia">
-                        <label class="form-check-label" for="alopecia">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="notalopecia" checked>
-                        <label class="form-check-label" for="notalopecia">
-                            No
-                        </label>
-                    </div>
-                </div>
+            <div class="row" style="margin-top: 50px;">
+                <label><b>Heart Attack or disease</b></label>
                 <div class="col">
                     <div>
-                        <h3>Fruits</h3>
                         <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[1][]" />Kiwi</label>
+                            <input type="checkbox" name="heart" class="radio" value="1" name="heart[1][]" />
+                            Yes
+                        </label>
+                        <br>
                         <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[1][]" />Jackfruit</label>
+                            <input type="checkbox" name="heart" class="radio" value="0" name="heart[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label><b>Smoker</b></label>
+                    <div>
                         <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[1][]" />Mango</label>
-                      </div>
-                      <div>
-                        <h3>Animals</h3>
+                            <input type="checkbox" name="smoker" class="radio" value="1" name="smoke[1][]" />
+                            Yes
+                        </label>
+                        <br>
                         <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[2][]" />Tiger</label>
-                        <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[2][]" />Sloth</label>
-                        <label>
-                          <input type="checkbox" class="radio" value="1" name="fooby[2][]" />Cheetah</label>
-                      </div>
+                            <input type="checkbox" name="smoker" class="radio" value="0" name="smoke[1][]" />
+                            No
+                        </label>
+                    </div>
                 </div>
             </div>
-            
 
+            <div class="row" style="margin-top: 50px;">
+                <label><b>Physical Activity</b></label>
+                <div class="col">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="pactivity" class="radio" value="1" name="pactivity[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="pactivity" class="radio" value="0" name="pactivity[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label><b>Alcohol consumption</b></label>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="alcohol" class="radio" value="1" name="alcohol[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="alcohol" class="radio" value="0" name="alcohol[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row" style="margin-top: 50px;">
+                <label><b>General Health</b></label>
+                <div class="col">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="ghealth" class="radio" value="1" name="ghealth[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="ghealth" class="radio" value="0" name="ghealth[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label><b>Mental Health</b></label>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="mhealth" class="radio" value="1" name="mhealth[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="mhealth" class="radio" value="0" name="mhealth[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row" style="margin-top: 50px;">
+                <label><b>Physical Health</b></label>
+                <div class="col">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="phealth" class="radio" value="1" name="phealth[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="phealth" class="radio" value="0" name="phealth[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label><b>Difficulty in walk</b></label>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="walking" class="radio" value="1" name="walk[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="walking" class="radio" value="0" name="walk[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 50px;">
+                <label><b>Education</b></label>
+                <div class="col">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="education" class="radio" value="1" name="education[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="education" class="radio" value="0" name="pactivity[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label><b>Income</b></label>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="income" class="radio" value="1" name="income[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="income" class="radio" value="0" name="income[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 50px;">
+                <label><b>Blood Pressure</b></label>
+                <div class="col">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="bloodpressure" class="radio" value="1" name="bp[1][]" />
+                            Yes
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="bloodpressure" class="radio" value="0" name="bp[1][]" />
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 50px">
+
+                <div class="col-4"></div>
+                <div class="col-4">                <button type="submit" class="btn btn-primary" style="width: 200px;border-radius: 5px;margin-bottom: 20px; align-items: center;">Submit</button></div>
+                <div class="col-4"></div>
+
+            </div>
         </div>
+    </form>
 
     </body>
     <script src="/static/script.js"></script>
     <script src="/static/check.js"></script>
-    
+
 </html>

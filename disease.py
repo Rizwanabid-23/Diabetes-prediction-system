@@ -48,11 +48,6 @@
     
     
     
-    
-    
-    
-    
-    
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -76,13 +71,7 @@ model=LogisticRegression(max_iter=253000)
 model.fit(x_train,y_train)
 y_predict=model.predict([[1,1,30,1,1,0,0,5,30,30,1,0,9,5,1]])
 print(y_predict)
-
 print(model.score(x_test,y_test))
-
-
-
-
-
 
 
 
