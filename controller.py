@@ -1,7 +1,36 @@
 from flask import Flask, render_template, request
 app = Flask(__name__, template_folder="templates")
 
+from disease import learner
 
+def ageConvertor(age):
+    if age>=18 and age<=24:
+        age=1
+    elif age>=25 and age<=29:
+        age=2
+    elif age>=30 and age<=34:
+        age=3
+    elif age>=35 and age<=39:
+        age=4
+    elif age>=40 and age<=44:
+        age=5
+    elif age>=45 and age<=49:
+        age=6
+    elif age>=50 and age<=54:
+        age=7
+    elif age>=55 and age<=59:
+        age=8
+    elif age>=60 and age<=64:
+        age=9
+    elif age>=65 and age<=69:
+        age=10
+    elif age>=70 and age<=74:
+        age=11
+    elif age>=75 and age<=79:
+        age=12
+    elif age>=80:
+        age=13
+    return age
 
 @app.route("/")
 def hello():
@@ -18,21 +47,96 @@ def patientData():
     data = request.form
     name = data['name']
     age=data['age']
+    gender=data['gender']
     bmi=data['bmi']
     cholestrol=data['chol']
     heartDisease=data['heart']
     smoker=data['smoker']
     physicalActivity=data['pactivity']
     alcohol=data['alcohol']
-    general=data['ghealth']
+    generalHealth=data['ghealth']
     mentalHealth=data['mhealth']
     physicalHealth=data['phealth']
     diffWalking=data['walking']
     education=data['education']
-    income=data['income']
-    bloodPressure=data['bloodpressure']    
+    fruit=data['fruit']
+    bloodPressure=data['bloodpressure'] 
+    veggies=data['veggies']
     
-    return render_template("result.html",name=name,age=age,bmi=bmi,chol=cholestrol)
+    age=int(age)
+    initial=int(age)
+    oldAge=ageConvertor(age)
+    
+    print("old age:",oldAge)
+
+    (prediction)=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,oldAge,education,fruit,veggies))
+    print("prediction ",prediction)
+    if prediction=='[0]':
+        prediction="Non-Diabetic"
+    else:
+        prediction="Diabetic"
+        
+    # if prediction=="Non-Diabetic":
+    #     statement="Based on current parameters, you might get diabetes by age of "
+    #     print("non diabetic age:",age )
+    #     age=int(age)
+    #     for i in range(5,60,5):
+    #         # print("i:",i)
+    #         age=int(age)+i
+    #         ageConverted=ageConvertor(age)
+    #         ageConverted=str(ageConverted)
+            
+            # bmi=int(bmi)
+            # bmi+=1
+            # bmi=str(bmi)
+            
+            # physicalHealth=int(physicalHealth)
+            # if physicalHealth>2:
+            #     physicalHealth-=2
+            # physicalHealth=str(physicalHealth)
+            # if i==10:   
+            #     bloodPressure=int(bloodPressure)
+            #     bloodPressure==1
+            #     bloodPressure=str(bloodPressure)
+                
+            #     generalHealth=int(generalHealth)
+            #     if generalHealth>1:
+            #         generalHealth-=1
+            #     generalHealth=str(generalHealth)
+                
+            #     diffWalking=int(diffWalking)
+            #     diffWalking==1
+            #     diffWalking=str(diffWalking)
+                
+            # if i==15:
+            #     heartDisease=int(heartDisease)
+            #     heartDisease==1
+            #     heartDisease=str(heartDisease)
+                
+            #     physicalActivity=int(physicalActivity)
+            #     physicalActivity==0
+            #     physicalActivity=str(physicalActivity)
+                
+            #     mentalHealth=int(mentalHealth)
+            #     if mentalHealth>1:
+            #         mentalHealth-=1
+                    
+            #     mentalHealth=str(mentalHealth)
+                
+                
+        #     future=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,ageConverted,education,fruit))
+        #     print("future ",future)
+        #     if future=='[1]':
+        #         newAge=initial+i
+        #         break
+        #     else:
+        #         newAge="90"
+        # return render_template("result.html",name=name,prediction=prediction,statement=statement,newAge=newAge)
+            
+            
+    return render_template("result.html",name=name,prediction=prediction)
+
+
 
 
 

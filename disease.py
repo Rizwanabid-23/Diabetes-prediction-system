@@ -1,11 +1,11 @@
-# import pandas as pd
-# import numpy as np
-# from sklearn import model_selection
-# from sklearn.metrics import accuracy_score
-# from sklearn.metrics import confusion_matrix
-# from sklearn.preprocessing import StandardScaler
-# from sklearn.linear_model import LinearRegression
-# from sklearn.model_selection import train_test_split
+import pandas as pd
+import numpy as np
+from sklearn import model_selection
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 
 # def dataset():
@@ -46,32 +46,34 @@
     
     
     
+def learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,age,education,fruit,veggies):                                                                                                   
+    file = pd.read_csv('diabetes_01.csv')
+    featured=['HighBP','HighChol','BMI','Smoker','HeartDiseaseorAttack','PhysActivity','HvyAlcoholConsump','GenHlth','MentHlth','PhysHlth','DiffWalk','Sex','Age','Education','Fruits','Veggies']
+    x=file[featured]
+    y=file.Diabetes
+    x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.7)
+
+    print("first algo: ")
+
+    model=LogisticRegression(max_iter=253000)
+
+    model.fit(x_train.values,y_train)
+    y_predict=model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(age),int(education),int(fruit),int(veggies)]])
+    # y_predict=model.predict([[1,1,40,1,0,0,0,5,18,15,1,0,9,4,0,1]])
+    return(y_predict)
+
+
+
+
+    # model=LogisticRegression(max_iter=253000)
+
+    # model.fit(x_train.values,y_train)
+    # y_predict=model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(age),int(education),int(fruit)]])
+    # # print("Predict:",y_predict)
+    # # print(model.score("Score:",x_test,y_test))
+    # return(y_predict)
     
-    
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
 
-#reading data/emails from file
-file = pd.read_csv('diabetes_01.csv')
-# df = pd.DataFrame(file)
-
-# x=df.drop('Diabetes',axis=1)
-# y=df['Diabetes']
-
-featured=['HighBP','HighChol','BMI','Smoker','HeartDiseaseorAttack','PhysActivity','HvyAlcoholConsump','GenHlth','MentHlth','PhysHlth','DiffWalk','Sex','Age','Education','Income']
-x=file[featured]
-y=file.Diabetes
-
-x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.8)
-
-model=LogisticRegression(max_iter=253000)
-
-model.fit(x_train,y_train)
-y_predict=model.predict([[1,1,30,1,1,0,0,5,30,30,1,0,9,5,1]])
-print(y_predict)
-print(model.score(x_test,y_test))
 
 
 
