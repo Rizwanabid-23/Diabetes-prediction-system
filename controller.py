@@ -76,62 +76,66 @@ def patientData():
     else:
         prediction="Diabetic"
         
-    # if prediction=="Non-Diabetic":
-    #     statement="Based on current parameters, you might get diabetes by age of "
-    #     print("non diabetic age:",age )
-    #     age=int(age)
-    #     for i in range(5,60,5):
-    #         # print("i:",i)
-    #         age=int(age)+i
-    #         ageConverted=ageConvertor(age)
-    #         ageConverted=str(ageConverted)
+    if prediction=="Non-Diabetic":
+        statement="Based on current parameters, you might get diabetes by age of "
+        # print("non diabetic age:",age )
+        # age=int(age)
+        for i in range(5,70,5):
+            # print("i:",i)
+            age=int(age)+i
+            ageConverted=ageConvertor(age)
+            ageConverted=str(ageConverted)
             
-            # bmi=int(bmi)
-            # bmi+=1
-            # bmi=str(bmi)
+            bmi=int(bmi)
+            bmi+=5
+            bmi=str(bmi)
             
-            # physicalHealth=int(physicalHealth)
-            # if physicalHealth>2:
-            #     physicalHealth-=2
-            # physicalHealth=str(physicalHealth)
-            # if i==10:   
-            #     bloodPressure=int(bloodPressure)
-            #     bloodPressure==1
-            #     bloodPressure=str(bloodPressure)
+            physicalHealth=int(physicalHealth)
+            if physicalHealth<=17:
+                physicalHealth+=2
+            physicalHealth=str(physicalHealth)
+            if i==10:   
+                bloodPressure=int(bloodPressure)
+                bloodPressure==1
+                bloodPressure=str(bloodPressure)
                 
-            #     generalHealth=int(generalHealth)
-            #     if generalHealth>1:
-            #         generalHealth-=1
-            #     generalHealth=str(generalHealth)
+                generalHealth=int(generalHealth)
+                if generalHealth>1:
+                    generalHealth-=1
+                generalHealth=str(generalHealth)
                 
-            #     diffWalking=int(diffWalking)
-            #     diffWalking==1
-            #     diffWalking=str(diffWalking)
+                diffWalking=int(diffWalking)
+                diffWalking==1
+                diffWalking=str(diffWalking)
                 
-            # if i==15:
-            #     heartDisease=int(heartDisease)
-            #     heartDisease==1
-            #     heartDisease=str(heartDisease)
+            cholestrol=int(cholestrol)
+            cholestrol=1
+            cholestrol=str(cholestrol)
                 
-            #     physicalActivity=int(physicalActivity)
-            #     physicalActivity==0
-            #     physicalActivity=str(physicalActivity)
+            if i==15:
+                heartDisease=int(heartDisease)
+                heartDisease==1
+                heartDisease=str(heartDisease)
                 
-            #     mentalHealth=int(mentalHealth)
-            #     if mentalHealth>1:
-            #         mentalHealth-=1
+                physicalActivity=int(physicalActivity)
+                physicalActivity==0
+                physicalActivity=str(physicalActivity)
+                
+                mentalHealth=int(mentalHealth)
+                if mentalHealth<=17:
+                    mentalHealth+=3
                     
-            #     mentalHealth=str(mentalHealth)
+                mentalHealth=str(mentalHealth)
                 
                 
-        #     future=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,ageConverted,education,fruit))
-        #     print("future ",future)
-        #     if future=='[1]':
-        #         newAge=initial+i
-        #         break
-        #     else:
-        #         newAge="90"
-        # return render_template("result.html",name=name,prediction=prediction,statement=statement,newAge=newAge)
+            future=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,ageConverted,education,fruit,veggies))
+            print("future ",future)
+            if future=='[1]':
+                newAge=initial+i
+                break
+            else:
+                newAge="90"
+        return render_template("result.html",name=name,prediction=prediction,statement=statement,newAge=newAge)
             
             
     return render_template("result.html",name=name,prediction=prediction)
