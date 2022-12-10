@@ -58,13 +58,31 @@
     <div class="row">
         <h2>Patient's Result</h2>
     </div>
-<br>
-<br>
+    <br>
+    <br>
     <div class="row">
-        <h4>The test result of {{name}} is: </h4> 
+        <h4>The test result of {{name}} is: </h4>
         <h3>{{prediction}}</h3>
 
         <h6>{{statement}} {{newAge}}</h6>
+    </div>
+    <br>
+    <div class="row">
+        <h4>To avoid further damage to health, here are some important tips to follow:</h4>
+
+        {% set list = health_tips.split(',') %}
+
+        {% for i in list %}
+        <ul>
+
+            <b>
+               <li>
+                {{i}}
+               </li> 
+            </b>
+        </ul>
+        <br>
+        {% endfor %}
     </div>
 
 

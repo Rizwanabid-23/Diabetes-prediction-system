@@ -54,3 +54,8 @@ function myFunction11() {
   var popup = document.getElementById("veggies");
   popup.classList.toggle("show");
 }
+
+function myFunction12() {
+  var popup = document.getElementById("pinfo");
+  popup.classList.toggle("show");
+}
