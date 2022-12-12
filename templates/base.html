@@ -47,16 +47,16 @@
     </div>
     </div>
 
-    <div class=" bg-light">
+    <div class=" bg-light" >
         <h4>Main </h4>
     </div>
-    <div class=" bg-light">
+    <div class=" bg-light" >
         <h6>Main </h6>
     </div>
 
     <div class="row" style="margin-top: 25px">
         <h2>Patient's Information</h2>
-
+        
     </div>
     <form action="/" method="POST">
         <div class="form">
@@ -94,12 +94,12 @@
                     </div>
                     <div>
                         <label>
-                            <input type="checkbox" class="radio" name="chol" value="1" />
+                            <input type="checkbox" class="radio" name="chol" value="1"  />
                             Yes
                         </label>
                         <br>
                         <label>
-                            <input type="checkbox" class="radio" name="chol" value="0" checked />
+                            <input type="checkbox" class="radio" name="chol" value="0" checked  />
                             No
                         </label>
                     </div>
@@ -111,7 +111,7 @@
                 <div class="col">
                     <div>
                         <label>
-                            <input type="checkbox" name="gender" class="radio" value="1" />
+                            <input type="checkbox" name="gender" class="radio" value="1"  />
                             Male
                         </label>
                         <br>
@@ -131,12 +131,12 @@
                     </div>
                     <div>
                         <label>
-                            <input type="checkbox" name="smoker" class="radio" value="1" />
+                            <input type="checkbox" name="smoker" class="radio" value="1"  />
                             Yes
                         </label>
                         <br>
                         <label>
-                            <input type="checkbox" name="smoker" class="radio" value="0" checked />
+                            <input type="checkbox" name="smoker" class="radio" value="0" checked/>
                             No
                         </label>
                     </div>
@@ -154,7 +154,7 @@
                     </div>
                     <div>
                         <label>
-                            <input type="checkbox" name="pactivity" class="radio" value="1" />
+                            <input type="checkbox" name="pactivity" class="radio" value="1"  />
                             Yes
                         </label>
                         <br>
@@ -180,7 +180,7 @@
                         </label>
                         <br>
                         <label>
-                            <input type=" checkbox" name="alcohol" class="radio" value="0" checked />
+                            <input type="checkbox" name="alcohol" class="radio" value="0" checked />
                             No
                         </label>
                     </div>
@@ -250,7 +250,7 @@
                         </label>
                         <br>
                         <label>
-                            <input type=" checkbox" name="walking" class="radio" value="0" checked />
+                            <input type="checkbox" name="walking" class="radio" value="0" checked />
                             No
                         </label>
                     </div>
@@ -263,9 +263,7 @@
                     <label><b>Education</b></label>
                     <div class="popup" onclick="myFunction8()">&nbsp; ?
                         <span class="popuptext addMore" id="education">
-                            <p>2=Never attended school or only kindergarten, &nbsp; 3=Grades 1 through 8(Elementary),
-                                4=Grades 9 through 12(Some high school), 5=University 1 to 4 years (Some college or
-                                technical school), 6=University 4 years or more(Post Graduate)</p>
+                            <p>2=Never attended school or only kindergarten, &nbsp; 3=Grades 1 through 8(Elementary), 4=Grades 9 through 12(Some high school), 5=University 1 to 4 years (Some college or technical school), 6=University 4 years or more(Post Graduate)</p>
                         </span>
                     </div>
                     <div>
@@ -300,7 +298,7 @@
                 <div class="col">
                     <div>
                         <label>
-                            <input type="checkbox" name="bloodpressure" class="radio" value="1" />
+                            <input type="checkbox" name="bloodpressure" class="radio" value="1"  />
                             Yes
                         </label>
                         <br>
@@ -320,7 +318,7 @@
                         </label>
                         <br>
                         <label>
-                            <input type=" checkbox" name="heart" class="radio" value="0" checked />
+                            <input type="checkbox" name="heart" class="radio" value="0" checked />
                             No
                         </label>
                     </div>
@@ -343,21 +341,20 @@
                         </label>
                         <br>
                         <label>
-                            <input type=" checkbox" name="veggies" class="radio" value="0" checked />
+                            <input type="checkbox" name="veggies" class="radio" value="0" checked />
                             No
                         </label>
                     </div>
                 </div>
 
-
+                
             </div>
 
             <div class="row" style="margin-top: 50px">
 
                 <div class="col-4"></div>
                 <div class="col-4"> <button type="submit" class="btn btn-primary"
-                        style="width: 200px;border-radius: 5px;margin-bottom: 20px; align-items: center;"
-                        onclick="loader()">Submit</button>
+                        style="width: 200px;border-radius: 5px;margin-bottom: 20px; align-items: center;" onclick="loader()">Submit</button>
                 </div>
                 <div class="col-4"></div>
 
@@ -371,9 +368,9 @@
     {
         const div = document.createElement('body');
 
-        div.className = 'body';
+  div.className = 'body';
 
-        div.innerHTML = `
+  div.innerHTML = `
     
 <div class="book">
   <div class="inner">
@@ -404,7 +401,7 @@
 </div><a class="dribbble" href="https://dribbble.com/shots/7199149-Book-Loader" target="_blank"><img src="https://dribbble.com/assets/logo-small-2x-9fe74d2ad7b25fba0f50168523c15fda4c35534f9ea0b1011179275383035439.png"/></a>
   `;
 
-        document.getElementById('body-pd').innerHTML(body);
+  document.getElementById('body-pd').append(body);
 
     }
 </script>
