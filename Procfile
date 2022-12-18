@@ -1,1 +1,1 @@
-web: gunicorn app:hello
+web: gunicorn main:hello()
