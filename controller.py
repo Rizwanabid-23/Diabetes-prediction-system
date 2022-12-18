@@ -2,22 +2,6 @@ from flask import Flask, render_template, request
 app = Flask(__name__, template_folder="templates")
 
 from disease import learner
-import pandas as pd
-
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-
-# file = pd.read_csv('diabetes_01.csv')
-# featured=['HighBP','HighChol','BMI','Smoker','HeartDiseaseorAttack','PhysActivity','HvyAlcoholConsump','GenHlth','MentHlth','PhysHlth','DiffWalk','Sex','Age','Education','Fruits','Veggies']
-# x=file[featured]
-# y=file.Diabetes
-# x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.7)
-
-# model=LogisticRegression(max_iter=253000)
-
-# model.fit(x_train.values,y_train)
-
-
 
 def ageConvertor(age):
     if age>=18 and age<=24:
@@ -157,4 +141,4 @@ def patientData():
 
 
 
-app.run(debug=True)
+app.run(debug=False,host='0.0.0.0')
