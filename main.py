@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 app = Flask(__name__, template_folder="templates")
-
-from disease import learner
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 def ageConvertor(age):
     if age>=18 and age<=24:
@@ -36,14 +37,20 @@ def ageConvertor(age):
 def hello():
     return render_template("base.html")
 
-
 @app.route("/checkPatient")
 def addProd():
     return render_template("base.html")
 
-
 @app.route("/", methods=['POST','GET'])
 def patientData():
+    file = pd.read_csv('diabetes_01.csv')
+    featured=['HighBP','HighChol','BMI','Smoker','HeartDiseaseorAttack','PhysActivity','HvyAlcoholConsump','GenHlth','MentHlth','PhysHlth','DiffWalk','Sex','Age','Education','Fruits','Veggies']
+    x=file[featured]
+    y=file.Diabetes
+    x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.7)
+    model=LogisticRegression(max_iter=253000)
+    model.fit(x_train.values,y_train)
+
     data = request.form
     name = data['name']
     age=data['age']
@@ -65,10 +72,8 @@ def patientData():
     
     age=int(age)
     initial=int(age)
-    oldAge=ageConvertor(age)
     
-    (prediction)=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,oldAge,education,fruit,veggies))
-    # prediction=model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(age),int(education),int(fruit),int(veggies)]])
+    (prediction)=str(model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(age),int(education),int(fruit),int(veggies)]]))
 
     if prediction=='[0]':
         prediction="Non-Diabetic"
@@ -80,18 +85,18 @@ def patientData():
     if prediction=="Non-Diabetic":
         statement="Based on current parameters, you might get diabetes by age of "
 
-        for i in range(5,70,5):
+        for i in range(4,60,4):
             age=int(age)+i
             ageConverted=ageConvertor(age)
             ageConverted=str(ageConverted)
             
             bmi=int(bmi)
-            bmi+=5
+            bmi+=2
             bmi=str(bmi)
                        
             physicalHealth=int(physicalHealth)
-            if physicalHealth<=17:
-                physicalHealth+=2
+            if physicalHealth>=20:
+                physicalHealth-=1
             physicalHealth=str(physicalHealth)
             if i==10:   
                 bloodPressure=int(bloodPressure)
@@ -99,7 +104,7 @@ def patientData():
                 bloodPressure=str(bloodPressure)
                 
                 generalHealth=int(generalHealth)
-                if generalHealth>1:
+                if generalHealth>=2:
                     generalHealth-=1
                 generalHealth=str(generalHealth)
                 
@@ -111,7 +116,7 @@ def patientData():
             cholestrol=1
             cholestrol=str(cholestrol)
                 
-            if i==15:
+            if i==20:
                 heartDisease=int(heartDisease)
                 heartDisease==1
                 heartDisease=str(heartDisease)
@@ -121,14 +126,12 @@ def patientData():
                 physicalActivity=str(physicalActivity)
                 
                 mentalHealth=int(mentalHealth)
-                if mentalHealth<=17:
-                    mentalHealth+=3
+                if mentalHealth>=20:
+                    mentalHealth-=1
                     
                 mentalHealth=str(mentalHealth)
                 
-                
-            future=str(learner(bloodPressure,cholestrol,bmi,smoker,heartDisease,physicalActivity,alcohol,generalHealth,mentalHealth,physicalHealth,diffWalking,gender,ageConverted,education,fruit,veggies))
-            # future=model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(age),int(education),int(fruit),int(veggies)]])
+            future=str(model.predict([[int(bloodPressure),int(cholestrol),int(bmi),int(smoker),int(heartDisease),int(physicalActivity),int(alcohol),int(generalHealth),int(mentalHealth),int(physicalHealth),int(diffWalking),int(gender),int(ageConverted),int(education),int(fruit),int(veggies)]]))
             if future=='[1]':
                 newAge=initial+i
                 break
@@ -136,7 +139,6 @@ def patientData():
                 newAge="90"
         return render_template("result.html",name=name,prediction=prediction,statement=statement,newAge=newAge,health_tips=health_tips)
     return render_template("result.html",name=name,prediction=prediction,health_tips=health_tips)
-
 
 
 if __name__=="__main__":
